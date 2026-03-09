@@ -1,298 +1,249 @@
-*{
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-body{
-    margin: 0%;
+html {
+    scroll-behavior: smooth;
 }
 
-#menu{
-    height: 100px;
-    background-color: #f8f9fa;
-    padding: 0 20px;
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom right, #000000, #1a1a1a, #000000);
+    color: white;
+    overflow-x: hidden;
 }
 
-#logo{
-    font-size: 50px;
-    position: absolute;
-    line-height: 100px;
-    color: black;
-    float: left;
+@keyframes blob {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(20px, -50px) scale(1.1); }
+    50% { transform: translate(-20px, 20px) scale(0.9); }
+    75% { transform: translate(50px, 50px) scale(1.05); }
 }
 
-#logo:hover{
-    color: orange;
-    
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
 }
 
-nav{
-    float: right;
-    line-height: 100px;
-    color: #000;
-    
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-nav a:link{
-    text-decoration: none;
-    font-size: 20px;
-    margin-right: 25px;
-    color: #f8f9fa;
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
 }
 
-nav a:hover{
-    color: orange;
-    border-bottom: 2px solid #f8f9fa;
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.ikon{
-    margin-right: 7px;
-    font-size: 16px;
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(249, 115, 22, 0.4),
+                    0 0 40px rgba(249, 115, 22, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(249, 115, 22, 0.6),
+                    0 0 60px rgba(249, 115, 22, 0.3);
+    }
 }
 
-#anasayfa{
-    background-color: gray;
-    height: 800px;
-    background-image: url("img/soru-cozmek.jpg");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+.animate-blob {
+    animation: blob 7s infinite;
 }
 
-#black{
-    height: 800px;
-    background-color: black;
-    opacity: 70%;
+.animation-delay-2s {
+    animation-delay: 2s;
 }
 
-#icerik{
-    position: absolute;
-    top: 30%;
-    left: 10%;
-    color: #f8f9fa;
-    font-size: 30px;
+.animation-delay-4s {
+    animation-delay: 4s;
 }
 
-#hakkimizda{
-    background-color: #f8f9fa;
-    padding: 50px;
-    text-align: center;
-    text-transform: capitalize;
-    font-weight: 600;
-    font-size: 30px;
+.animate-float {
+    animation: float 3s ease-in-out infinite;
 }
 
-h3{
-    font-size: 55px;
-    color: black;
-    text-shadow: 0px 1px 1px black;
-    font-weight: 600;
+.animate-rotate {
+    animation: rotate 20s linear infinite;
 }
 
-.container{
-    width: 1200px;
-    height: auto;
-    margin: auto;
+.animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
 }
 
-#sol{
-    float: left;
-    border-right: 3px solid gray;
-    font-size: 30px;
+.animate-shimmer {
+    animation: shimmer 2s infinite;
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.delay-200 {
+    animation-delay: 0.2s;
+    opacity: 0;
+}
+
+.delay-400 {
+    animation-delay: 0.4s;
+    opacity: 0;
+}
+
+.bg-blob {
+    position: fixed;
+    border-radius: 50%;
+    mix-blend-mode: multiply;
+    filter: blur(80px);
+    opacity: 0.2;
+}
+
+.cursor-glow {
+    position: fixed;
     width: 400px;
-    color: black;
-}
-
-#h5sol{
-    line-height: 1.6;
-    font-size: 45px;
-    font-weight: 600;
-}
-
-#h5sol, #sag{
-    margin: 0;
-    padding: 0;
-    margin-top: 2px;
-
-}
-
-#sag{
-    text-align: center;
-
-}
-
-.img-fluid{
-    max-width: 100%;
-    height: auto;
-}
-
-#pson{
-    font-size: 35px;
-}
-
-#egitimler{
-    background-color: darkorange;
-    padding: 10px;
-    text-align: center;
-    height: 1000px;
-}
-
-#card{
-    width: 320px;
     height: 400px;
-    border: 1px solid #999;
-    padding: 0;
-    display: inline-block;
-    border-radius: 2%;
-    margin: 20px;
-    background-color: #fff;
-
-
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 50;
+    transition: all 0.3s;
+    opacity: 0.3;
+    background: radial-gradient(circle, rgba(249, 115, 22, 0.4) 0%, transparent 70%);
 }
 
-.baslikcard{
-    font-size: 15px;
-    color: darkorange;
+.nav-link {
+    position: relative;
+    transition: color 0.3s;
 }
 
-.cardp{
-    color: #888;
+.nav-link:hover {
+    color: #f97316;
 }
 
-.cardpara{
-    color: black;
-    font-size: 20px;
+.nav-link.active {
+    color: #f97316;
 }
 
-#ekip{
-    background-color: #003666;
-    padding: 50px;
-    height: 1000px;
-    text-align: center;
-}
-
-#ekiph3{
-    color: #f8f9fa;
-}
-
-.sutun-sol-sag{
-    width: 800px;
-    float: left;
-    padding: 50px;
-}
-
-.oval{
-    border-radius: 20%;
-}
-
-.ekipisim{
-    color: white;
-    font-size: 25px;
-    margin-bottom: 12px;
-}
-
-.ekipp{
-    color: #888;
-    font-size: 20px;
-}
-
-#iletisim{
-    background: url(../img/soru-cozmek.jpg);
-    background-size: cover;
-    padding: 50px;
-    height: 1000px;
-    text-align: center;
-    background-color: gray;
-    background-position: center;
-    background-attachment: fixed;
-}
-
-#h3iletisim{
-    color: #fff;
-}
-
-#iletisimopak{
-    background: rgba(0, 0, 0, 0.2);
-    padding: 30px 20px;
-    border-radius: 15px;
-    margin-bottom: 50px;
-    height: 550px;
-}
-
-#formgroup{
-    width: 700px;
-    float: left;
-    height: 500px;
-    text-align: left;
-}
-
-#solform{
-    width: 49%;
-    float: left;
-}
-
-#sagform{
-    width: 49%;
-    float: right;
-}
-
-.form-control{
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
     width: 100%;
-    padding: 10px;
-    font-size: 15px;
-    line-height: 1.5;
-    color: #495057;
-    background-color: white;
-    margin: 10px;
-    border-radius: 5px;
-    border: 1px solid #495057;
+    height: 2px;
+    background: linear-gradient(to right, #f97316, #fbbf24);
 }
 
-textarea{
-    font-family: arial;
+.project-card {
+    transition: all 0.3s;
 }
 
-input[type="submit"]{
+.project-card:hover {
+    transform: translateY(-8px);
+}
+
+.profile-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 4px solid #f97316;
+    object-fit: cover;
+    position: relative;
+}
+
+.gradient-text {
+    background: linear-gradient(to right, #f97316, #fbbf24);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.btn-primary {
+    background: linear-gradient(to right, #ea580c, #d97706);
+    padding: 16px 32px;
+    border-radius: 9999px;
+    font-weight: 600;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(249, 115, 22, 0.3);
+    transition: all 0.3s;
+    border: none;
     cursor: pointer;
-    background-color: darkorange;
-    font-size: 18px;
-    letter-spacing: 1px;
-    padding: 10px 30px;
-    color: black;
-    border: 2px solid white;
-    border-radius: 10px;
-    margin-left: 580px;
-}
-
-#adres{
-    width: 450px;
-    float: right;
-    padding: 30px;
-    height: 500px;
-    text-align: left;
-}
-
-#adresbaslik{
-    font-size: 30px;
     color: white;
+    text-decoration: none;
+    display: inline-block;
 }
 
-.adresp{
-    color: #ddd;
-    font-size: 15px;
-    letter-spacing: 1.5px;
+.btn-primary:hover {
+    box-shadow: 0 15px 40px rgba(249, 115, 22, 0.4);
+    transform: translateY(-2px);
 }
 
-#copyright{
-    color: black;
-    font-size: 20px;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
+.btn-secondary {
+    padding: 16px 32px;
+    border: 2px solid #f97316;
+    border-radius: 9999px;
+    font-weight: 600;
+    transition: all 0.3s;
+    background: transparent;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
 }
 
-#up{
-    color: black;
+.btn-secondary:hover {
+    background: rgba(249, 115, 22, 0.1);
+    transform: translateY(-2px);
 }
 
-.soru{
-    text-align: center;
+.icon-float {
+    position: absolute;
+    opacity: 0.3;
+}
+
+section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 80px 24px;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 40;
+    transition: all 0.3s;
+}
+
+.navbar.scrolled {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 4px 20px rgba(249, 115, 22, 0.1);
+}
+
+.app-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.app-card:hover {
+    transform: translateY(-12px) scale(1.02);
+}
+
+.app-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    object-fit: cover;
 }
